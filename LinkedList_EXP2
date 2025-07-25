@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class LinkedList {
+    static class Node {
+        int data;
+        Node next;
+
+// constructor
+        Node(int d) {
+            data = d;
+            next = null;
+        }
+    }
+
+    Node head = null;
+
+    public void insert(int data) 
+    {
+        Node newNode = new Node(data);
+
+        if (head == null) 
+        {
+            head = newNode;
+        } 
+        else 
+        {
+            Node last = head;
+            while (last.next != null)
+            {
+                last = last.next;
+            }
+            last.next = newNode;
+        }
+    }
+
+    public void printList()
+    {
+        Node currNode = head;
+        System.out.println("LinkedList: ");
+        while (currNode != null)
+        {
+            System.out.println(currNode.data);
+            currNode = currNode.next;
+        }
+    }
+
+    public static void main(String[] args) 
+    {
+        LinkedList list = new LinkedList();
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter number of nodes:");
+        int n = sc.nextInt();
+
+        System.out.println("Enter the data for each node:");
+        for (int i = 0; i < n; i++) 
+        {
+            int data = sc.nextInt();
+            list.insert(data);
+        }
+
+        list.printList();
+        sc.close();
+    }
+}
