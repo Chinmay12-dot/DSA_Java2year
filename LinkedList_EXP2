@@ -13,7 +13,7 @@ public class LinkedList {
     }
 
     Node head = null;
-
+// method for insert a node
     public void insert(int data) 
     {
         Node newNode = new Node(data);
@@ -32,7 +32,7 @@ public class LinkedList {
             last.next = newNode;
         }
     }
-
+//  method to print the list
     public void printList()
     {
         Node currNode = head;
@@ -43,7 +43,7 @@ public class LinkedList {
             currNode = currNode.next;
         }
     }
-
+//  main
     public static void main(String[] args) 
     {
         LinkedList list = new LinkedList();
