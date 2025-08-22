@@ -1,0 +1,53 @@
+public class Stackexp
+{
+    int top=-1;
+    int size=5;
+    int []stack_arr=new int[size];
+    public void push(int a ){
+        if(top==size-1){
+            System.out.println("stack Overflow");
+            return;
+    }
+        else{
+           
+            top++;
+            stack_arr[top]=a;
+            System.out.println("pushed elements:"+stack_arr[top]);
+           
+        }
+    }
+    public void pop( ){
+        if(top==0){
+            System.out.println("Underflow");
+        }
+        else{
+            top--;
+            System.out.println("poped elements:"+stack_arr[top]);
+        }
+    }
+    public void peek(){
+        System.out.println("Peeked element:"+ stack_arr[top]);
+       
+    }
+   
+
+public static void main(String[] args) {
+   
+   
+   Stackexp stack=new Stackexp();
+   stack.push(1);
+   stack.push(2);
+   stack.push(3);
+   stack.push(4);
+   stack.push(5);
+   stack.push(6);
+   stack.pop();
+   stack.pop();
+   stack.pop();
+   stack.pop();
+   stack.peek();
+   
+ 
+
+}
+}
