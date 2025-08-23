@@ -1,11 +1,12 @@
 import java.util.Scanner;
 
 public class LinkedList {
+    // Node class
     static class Node {
         int data;
         Node next;
 
-// constructor
+        // Constructor
         Node(int d) {
             data = d;
             next = null;
@@ -13,39 +14,40 @@ public class LinkedList {
     }
 
     Node head = null;
-// method for insert a node
-    public void insert(int data) 
-    {
+
+    // Method to insert a node
+    public void insert(int data) {
         Node newNode = new Node(data);
 
-        if (head == null) 
-        {
+        if (head == null) {
             head = newNode;
-        } 
-        else 
-        {
+        } else {
             Node last = head;
-            while (last.next != null)
-            {
+            while (last.next != null) {
                 last = last.next;
             }
             last.next = newNode;
         }
     }
-//  method to print the list
-    public void printList()
-    {
+
+    // Method to print the list in array form
+    public void printList() {
         Node currNode = head;
-        System.out.println("LinkedList: ");
-        while (currNode != null)
-        {
-            System.out.println(currNode.data);
+        System.out.print("LinkedList as array: [");
+
+        while (currNode != null) {
+            System.out.print(currNode.data);
             currNode = currNode.next;
+            if (currNode != null) {
+                System.out.print(", ");
+            }
         }
+
+        System.out.println("]");
     }
-//  main
-    public static void main(String[] args) 
-    {
+
+    // Main method
+    public static void main(String[] args) {
         LinkedList list = new LinkedList();
         Scanner sc = new Scanner(System.in);
 
@@ -53,8 +55,7 @@ public class LinkedList {
         int n = sc.nextInt();
 
         System.out.println("Enter the data for each node:");
-        for (int i = 0; i < n; i++) 
-        {
+        for (int i = 0; i < n; i++) {
             int data = sc.nextInt();
             list.insert(data);
         }
