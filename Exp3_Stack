@@ -1,53 +1,83 @@
-public class Stackexp
-{
-    int top=-1;
-    int size=5;
-    int []stack_arr=new int[size];
-    public void push(int a ){
-        if(top==size-1){
-            System.out.println("stack Overflow");
-            return;
-    }
-        else{
-           
+public class Stackexp {
+    int top = -1;
+    int size = 5;
+    int[] stack_arr = new int[size];
+
+    // Push 
+    public void push(int a) {
+        if (top == size - 1) {
+            System.out.println("Stack Overflow");
+        } else {
             top++;
-            stack_arr[top]=a;
-            System.out.println("pushed elements:"+stack_arr[top]);
-           
+            stack_arr[top] = a;
+            System.out.println("Pushed element: " + stack_arr[top]);
         }
     }
-    public void pop( ){
-        if(top==0){
+
+    // Pop 
+    public void pop() {
+        if (top == -1) {
             System.out.println("Underflow");
-        }
-        else{
+        } else {
+            System.out.println("Popped element: " + stack_arr[top]);
             top--;
-            System.out.println("poped elements:"+stack_arr[top]);
         }
     }
-    public void peek(){
-        System.out.println("Peeked element:"+ stack_arr[top]);
-       
+
+    // Peek 
+    public void peek() {
+        if (top == -1) {
+            System.out.println("Stack is empty. No element to peek.");
+        } else {
+            System.out.println("Peeked element: " + stack_arr[top]);
+        }
     }
-   
 
-public static void main(String[] args) {
-   
-   
-   Stackexp stack=new Stackexp();
-   stack.push(1);
-   stack.push(2);
-   stack.push(3);
-   stack.push(4);
-   stack.push(5);
-   stack.push(6);
-   stack.pop();
-   stack.pop();
-   stack.pop();
-   stack.pop();
-   stack.peek();
-   
- 
+    // Display 
+    public void display() {
+        if (top == -1) {
+            System.out.println("Final stack elements: []");
+        } else {
+            System.out.print("Final stack elements: [");
+            for (int i = 0; i <= top; i++) {
+                System.out.print(stack_arr[i]);
+                if (i < top) {
+                    System.out.print(", ");
+                }
+            }
+            System.out.println("]");
+        }
+    }
 
-}
+    // Main method
+    public static void main(String[] args) {
+        Stackexp stack = new Stackexp();
+
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        stack.push(5);
+        stack.push(6); // Overflow
+
+        stack.pop();
+        stack.pop();
+        stack.pop();
+        stack.pop();
+        
+        stack.peek(); 
+
+        stack.push(7);
+        stack.push(8); // Overflow
+
+        stack.pop();
+        stack.peek();
+
+        stack.pop();
+        stack.push(9);
+        stack.push(10); // Overflow
+
+        
+        stack.display();
+    }
 }
