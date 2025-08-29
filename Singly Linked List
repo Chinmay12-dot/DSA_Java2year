@@ -1,0 +1,112 @@
+class Main {
+
+    Node head;
+
+    class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+        }
+    }
+
+    
+    void addFirst(int data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+    }
+
+   
+    void addLast(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+        Node curr = head;
+        while (curr.next != null) {
+            curr = curr.next;
+        }
+        curr.next = newNode;
+    }
+
+    
+    void deleteFirst() {
+        if (head == null) {
+            System.out.println("List is already empty.");
+            return;
+        }
+        head = head.next;
+    }
+
+    
+    void deleteLast() {
+        if (head == null) {
+            System.out.println("List is already empty.");
+            return;
+        }
+        if (head.next == null) {
+            head = null;
+            return;
+        }
+        Node curr = head;
+        while (curr.next.next != null) {
+            curr = curr.next;
+        }
+        curr.next = null;
+    }
+
+    
+    void printList() {
+        Node curr = head;
+        System.out.print("Linked List:- [");
+        while (curr != null) {
+            System.out.print(curr.data);
+            if (curr.next != null) {
+                System.out.print(", ");
+            }
+            curr = curr.next;
+        }
+        System.out.println("]");
+    }
+
+    int getSize() {
+        int c = 0;
+        for (Node t = head; t != null; t = t.next) c++;
+        return c;
+    }
+
+    void reverseList() {
+        Node prev = null, curr = head;
+        while (curr != null) {
+            Node next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
+    
+    
+    public static void main(String[] args) {
+        Main list = new Main();
+
+        list.addFirst(10);
+        list.addLast(20);
+        list.addLast(30);
+        list.addFirst(40);
+        list.addLast(50);
+        list.addFirst(60);
+        list.deleteFirst();
+        list.deleteLast();
+        list.printList();
+        
+        System.out.println("Size of list: " + list.getSize());
+
+        list.reverseList();
+        System.out.print("After reverse: ");
+        list.printList();
+    }
+}
