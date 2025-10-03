@@ -1,32 +1,33 @@
+import java.util.*;
 public class BinarySearch {
-
-    public static int binarySearch(int[] arr, int s) {
+    public static int binaryS(int[] arr, int t) {
         int left = 0;
         int right = arr.length - 1;
-
         while (left <= right) {
-            int mid = left + (right - left) / 2;
+            int mid = ( left + right ) / 2;
 
-            if (arr[mid] == s) {
-                return mid; 
-            } else if (arr[mid] < s) {
-                left = mid + 1; 
+            if (arr[mid] == t) {
+                return mid;
+            } else if (arr[mid] < t) {
+                left = mid + 1;
             } else {
-                right = mid - 1; 
+                right = mid - 1;
             }
         }
-        return -1; 
+        return -1;
     }
-    
     public static void main(String[] args) {
-        int[] Array = {2, 5, 8, 12, 16, 23,32};
-        int s1 = 12;
-        int s2 = 10;
-
-        int index1 = binarySearch(Array, s1);
-        int index2 = binarySearch(Array, s2);
-
-        System.out.println(s1 + "at: " + index1);
-        System.out.println(s2 + "at: " + index2); 
+        Scanner s = new Scanner(System.in);
+        int[] Array = {2, 5, 8, 12, 16, 23, 32};
+        System.out.print("Enter the number to search: ");
+        int t = s.nextInt();
+        int index = binaryS(Array, t);
+        if (index != -1) {
+            System.out.println(t + " found at position: " + (index + 1));
+        } else {
+            System.out.println(t + " not found in the array.");
+        }
+        System.out.println("Array: " + Arrays.toString(Array));
+        s.close();
     }
 }
